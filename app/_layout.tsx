@@ -1,24 +1,30 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { View, StyleSheet, Text } from "react-native";
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+        <View style={styles.container}>
+          <Text style={styles.name}> Abenezer The Greate</Text>
+        </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: .25,
+    backgroundColor: "red",
+    alignItems: 'center',
+    fontFamily: 'Impact',
+    justifyContent: "flex-end"
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000',
+    
+    
+  
+}
+})
