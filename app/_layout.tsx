@@ -13,18 +13,12 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: .25,
+    flex: 1,
     backgroundColor: "red",
-    alignItems: 'center',
-    fontFamily: 'Impact',
-    justifyContent: "flex-end"
   },
   name: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#000',
-    
-    
-  
-}
+  }
 })
