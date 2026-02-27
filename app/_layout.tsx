@@ -1,22 +1,34 @@
 
-import { View, Dimensions } from "react-native";
+import { useState } from "react";
+import { Text, View, Button, Modal} from "react-native";
 
 export default function RootLayout() {
-  const PHONE_HIGHT = Dimensions.get("window").height;
-  const PHONE_WIDTH = Dimensions.get("window").width;
+
+const [modalVisible, setModalVisible] = useState(false);
+  const  [stateValue, setValueState] = useState(666)
+  const IncremetValue = () => setValueState(prevStateValue => prevStateValue + 10);
+  const DecremetValue = () => setValueState(prevStateValue => prevStateValue - 10);
   return (
     <View style={{
-      backgroundColor:"white",
+      backgroundColor:"blue",
       flex:1,
+      justifyContent:"center"
     }}>
-      
+      <Text style={{
+        fontSize:100,
+        color: "red"
+        
+      }}>
+        {stateValue}
+        </Text>
+      <Button title="+" onPress={IncremetValue} />
+      <Button title="-" onPress={DecremetValue} />
+      <Button title="Modal Show" onPress={() => setModalVisible(preModalState => !preModalState)} />
+      <Modal animationType="slide" visible={modalVisible}>
+
+      <Button title="Modal Hide" onPress={() => setModalVisible(preModalState => !preModalState)} />
+      </Modal>
      
-   <View style={{
-      backgroundColor:"tomato",
-      width: PHONE_WIDTH / 2,
-      height: PHONE_HIGHT / 2
-    }} />
-      
       
     </View>
   );
