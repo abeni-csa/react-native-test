@@ -1,32 +1,20 @@
 
-import { View } from "react-native";
+import { View, Dimensions } from "react-native";
 
 export default function RootLayout() {
+  const PHONE_HIGHT = Dimensions.get("window").height;
+  const PHONE_WIDTH = Dimensions.get("window").width;
   return (
     <View style={{
       backgroundColor:"white",
       flex:1,
-      flexDirection:"row",
-      alignItems:"center",
-      justifyContent: "center",
     }}>
       
-    <View style={{
-      backgroundColor:"tomato",
-      width: 90,
-      height: 90
-    }} />
-      
-    <View style={{
-      backgroundColor:"green",
-      width: 90,
-      height: 90
-    }} />
      
    <View style={{
-      backgroundColor:"gold",
-      width: 90,
-      height: 90
+      backgroundColor:"tomato",
+      width: PHONE_WIDTH / 2,
+      height: PHONE_HIGHT / 2
     }} />
       
       
