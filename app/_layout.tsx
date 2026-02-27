@@ -1,5 +1,5 @@
 
-import { Alert, StyleSheet, Text, Image, Button, TouchableOpacity, Pressable} from "react-native";
+import { Alert, StyleSheet, ScrollView, Text, Image, Button, TouchableOpacity, Pressable} from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
@@ -16,6 +16,7 @@ export default function RootLayout() {
     return (
     <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
+          <ScrollView showsVerticalScrollIndicator={true}>
           <Text style={styles.name}> Temar Lije</Text>
           <Button title="Press Me" onPress={onButtonPress} />
 
@@ -39,6 +40,61 @@ export default function RootLayout() {
              height={100}
              source={require("../assets/images/react-logo.png")} />
           </TouchableOpacity>
+
+          <Pressable onPress={onButtonPress}>
+          <Image
+            width={2000}
+            height={100}
+            blurRadius={15}
+            // style={styles.pic_one}
+            source={require("../assets/images/react-logo.png")
+          } />
+          </Pressable>
+          <Pressable onPress={onButtonPress}>
+          <Image
+            width={2000}
+            height={100}
+            blurRadius={5}
+            // style={styles.pic_one}
+            source={require("../assets/images/react-logo.png")
+          } />
+          </Pressable>
+          <Pressable onPress={onButtonPress}>
+          <Image
+            width={2000}
+            height={100}
+            blurRadius={15}
+            // style={styles.pic_one}
+            source={require("../assets/images/react-logo.png")
+          } />
+          </Pressable>
+          <Pressable onPress={onButtonPress}>
+          <Image
+            width={2000}
+            height={100}
+            blurRadius={15}
+            // style={styles.pic_one}
+            source={require("../assets/images/react-logo.png")
+          } />
+          </Pressable>
+          <Pressable onPress={onButtonPress}>
+          <Image
+            width={2000}
+            height={100}
+            blurRadius={15}
+            // style={styles.pic_one}
+            source={require("../assets/images/react-logo.png")
+          } />
+          </Pressable>
+          <Pressable onPress={onButtonPress}>
+          <Image
+            width={2000}
+            height={100}
+            // style={styles.pic_one}
+            source={require("../assets/images/react-logo.png")
+          } />
+          </Pressable>
+        </ScrollView>
         </SafeAreaView>
       </SafeAreaProvider>
   );
@@ -47,7 +103,7 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
   },
   name: {
     fontSize: 24,
@@ -58,7 +114,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     textAlign: "justify",
-    color: '#fff',
+    color: '#000',
   } 
   
 })
