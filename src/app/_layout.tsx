@@ -1,0 +1,22 @@
+import { Tabs } from 'expo-router';
+import React from 'react';
+import CustomNavBar from '../components/CustomNavBar';
+
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+export default function _layout() {
+
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+
+        <Tabs tabBar={(props) => <CustomNavBar {...props} />}>
+          <Tabs.Screen name='analytics' options={{ title: "Monitor" }} />
+          <Tabs.Screen name='fee' options={{ title: "Fee" }} />
+          <Tabs.Screen name='explor' options={{ title: "Explo" }} />
+          <Tabs.Screen name='chat' options={{ title: "Chat" }} />
+          <Tabs.Screen name='profile' options={{ title: "Profile" }} />
+        </Tabs>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
+}
