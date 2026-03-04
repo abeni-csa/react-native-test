@@ -1,13 +1,17 @@
 import React from "react";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { TouchableOpacity, View, StyleSheet } from "react-native";
+import Animated, { FadeIn, FadeOut, LinearTransition } from "react-native-reanimated";
+
 import Feather from "@expo/vector-icons/Feather"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
 import AntDesign from "@expo/vector-icons/AntDesign"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import { s } from "react-native-size-matters"
+
 const PRI_COLOR = '#130057';
 const SEC_COLOR = '#ffffff';
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 const CustomNavBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
   return (
@@ -36,22 +40,28 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigat
         console.info("[+] route: ", route);
         console.info("[+] index: ", index);
         return (
-          <TouchableOpacity
+          <AnimatedTouchableOpacity
+            layout={LinearTransition.springify().mass(0.5)}
             key={route.key}
             // accessibilityRole="button"
             // accessibilityState={isFocused ? { selected: true } : { selected: false }}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarButtonTestID}
             onPress={onPress}
-            style={[style.tabItems, {backgroundColor: isFocused? SEC_COLOR : "transparent"}]}
+            style={[style.tabItems, { backgroundColor: isFocused ? SEC_COLOR : "transparent" }]}
           >
-            {getIconByRouteName(route.name, isFocused? PRI_COLOR : SEC_COLOR)}
+            {getIconByRouteName(route.name, isFocused ? PRI_COLOR : SEC_COLOR)}
             {isFocused &&
-              <Text style={style.text}>
+              <Animated.Text
+                entering={FadeIn.duration(500)}
+                exiting={FadeOut.duration(500)}
+
+                style={style.text}
+              >
                 {lable as string}
-              </Text>
+              </Animated.Text>
             }
-          </TouchableOpacity>
+          </AnimatedTouchableOpacity>
         );
       })}
     </View>
@@ -96,12 +106,12 @@ const style = StyleSheet.create({
     alignItems: "center",
     height: s(36),
     paddingHorizontal: s(12),
-    borderRadius:30
+    borderRadius: 30
   },
   text: {
     color: PRI_COLOR,
     marginLeft: s(8),
-    fontWeight:500
+    fontWeight: 500
   }
 })
 

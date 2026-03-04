@@ -9,8 +9,8 @@ export default function _layout() {
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
 
-        <Tabs tabBar={(props) => <CustomNavBar {...props} />}>
-          <Tabs.Screen name='analytics' options={{ title: "Monitor" }} />
+        <Tabs screenOptions={{headerShown:false}} tabBar={(props) => <CustomNavBar {...props} />}>
+          <Tabs.Screen name='analytics' options={{ title:"Monitor" }} />
           <Tabs.Screen name='fee' options={{ title: "Fee" }} />
           <Tabs.Screen name='explor' options={{ title: "Explo" }} />
           <Tabs.Screen name='chat' options={{ title: "Chat" }} />
