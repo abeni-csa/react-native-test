@@ -8,7 +8,12 @@ interface CProps {
 const ItemListColor: React.FC<CProps> = ({color}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{ flex: 1, alignItems:"center"}}>
+      <View style={{
+        paddingTop: 60,
+        flex: 1,
+        bottom:60,
+        alignItems:"center"
+      }}>
         {Array.from({length:100}).map((_,index) => {
           return (
             <View
