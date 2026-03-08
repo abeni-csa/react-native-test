@@ -1,22 +1,48 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import CustomNavBar from '../components/CustomNavBar';
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { AuthProvider } from "@/src/context/AuthContext";
 
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-export default function _layout() {
+export default function RootLayout() {
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
+    <AuthProvider>
+      <React.Fragment>
+        <StatusBar style="auto" />
+        <Stack>
+          <Stack.Screen
+            name="(protected)"
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="student-form"
+            options={{
+              headerShown: true,
+              title: "Student Profile"
+            }}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false
+            }}
+            name="userSelection" />
+          <Stack.Screen
 
-        <Tabs screenOptions={{headerShown:false}} tabBar={(props) => <CustomNavBar {...props} />}>
-          <Tabs.Screen name='analytics' options={{ title:"Monitor" }} />
-          <Tabs.Screen name='fee' options={{ title: "Fee" }} />
-          <Tabs.Screen name='explor' options={{ title: "Explo" }} />
-          <Tabs.Screen name='chat' options={{ title: "Chat" }} />
-          <Tabs.Screen name='profile' options={{ title: "Profile" }} />
-        </Tabs>
-      </SafeAreaView>
-    </SafeAreaProvider>
+            options={{
+              headerShown: false
+            }}
+            name="login" />
+          <Stack.Screen
+
+            options={{
+              headerShown: false
+            }}
+
+            name="register" />
+        </Stack>
+      </React.Fragment>
+    </AuthProvider>
   );
 }
